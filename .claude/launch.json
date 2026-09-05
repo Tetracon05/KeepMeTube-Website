@@ -3,9 +3,10 @@
   "configurations": [
     {
       "name": "keepmetube-website",
-      "runtimeExecutable": "python3",
+      "runtimeExecutable": "python",
       "runtimeArgs": ["-m", "http.server", "4173"],
-      "port": 4173
+      "port": 4173,
+      "autoPort": false
     }
   ]
 }
