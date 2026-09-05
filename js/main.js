@@ -1,0 +1,314 @@
+(function () {
+  "use strict";
+
+  /* ---------------------------------------------------------------------
+     Theme: light / dark / system, persisted in localStorage
+     --------------------------------------------------------------------- */
+  var THEME_KEY = "keepmetube-theme";
+  var root = document.documentElement;
+  var themeColorMeta = document.getElementById("theme-color-meta");
+
+  function systemPrefersDark() {
+    return window.matchMedia("(prefers-color-scheme: dark)").matches;
+  }
+
+  function resolvedIsDark(choice) {
+    if (choice === "dark") return true;
+    if (choice === "light") return false;
+    return systemPrefersDark();
+  }
+
+  function applyTheme(choice) {
+    if (choice === "light" || choice === "dark") {
+      root.setAttribute("data-theme", choice);
+    } else {
+      root.removeAttribute("data-theme");
+    }
+    if (themeColorMeta) {
+      themeColorMeta.setAttribute("content", resolvedIsDark(choice) ? "#111111" : "#ededed");
+    }
+    var buttons = document.querySelectorAll("[data-theme-choice]");
+    for (var i = 0; i < buttons.length; i++) {
+      var isActive = buttons[i].getAttribute("data-theme-choice") === choice;
+      buttons[i].setAttribute("aria-checked", isActive ? "true" : "false");
+    }
+  }
+
+  function initTheme() {
+    var saved = null;
+    try { saved = localStorage.getItem(THEME_KEY); } catch (e) {}
+    var choice = saved === "light" || saved === "dark" ? saved : "system";
+    applyTheme(choice);
+
+    var switchers = document.querySelectorAll("[data-theme-switch]");
+    switchers.forEach(function (switcher) {
+      switcher.addEventListener("click", function (e) {
+        var btn = e.target.closest("[data-theme-choice]");
+        if (!btn) return;
+        var next = btn.getAttribute("data-theme-choice");
+        try { localStorage.setItem(THEME_KEY, next); } catch (err) {}
+        applyTheme(next);
+      });
+    });
+
+    var mq = window.matchMedia("(prefers-color-scheme: dark)");
+    var onSystemChange = function () {
+      var current = null;
+      try { current = localStorage.getItem(THEME_KEY); } catch (e) {}
+      if (current !== "light" && current !== "dark" && themeColorMeta) {
+        themeColorMeta.setAttribute("content", systemPrefersDark() ? "#111111" : "#ededed");
+      }
+    };
+    if (mq.addEventListener) mq.addEventListener("change", onSystemChange);
+  }
+
+  /* ---------------------------------------------------------------------
+     Mobile nav
+     --------------------------------------------------------------------- */
+  function initMobileNav() {
+    var toggle = document.querySelector("[data-menu-toggle]");
+    var nav = document.querySelector("[data-mobile-nav]");
+    if (!toggle || !nav) return;
+
+    function close() {
+      nav.hidden = true;
+      toggle.setAttribute("aria-expanded", "false");
+      toggle.innerHTML = '<svg class="icon" aria-hidden="true"><use href="#icon-menu"></use></svg>';
+      document.body.style.overflow = "";
+    }
+    function open() {
+      nav.hidden = false;
+      toggle.setAttribute("aria-expanded", "true");
+      toggle.innerHTML = '<svg class="icon" aria-hidden="true"><use href="#icon-close"></use></svg>';
+      document.body.style.overflow = "hidden";
+    }
+
+    toggle.addEventListener("click", function () {
+      if (nav.hidden) open(); else close();
+    });
+    nav.addEventListener("click", function (e) {
+      if (e.target.tagName === "A") close();
+    });
+    window.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && !nav.hidden) close();
+    });
+    window.matchMedia("(min-width: 900px)").addEventListener("change", function (mq) {
+      if (mq.matches) close();
+    });
+  }
+
+  /* ---------------------------------------------------------------------
+     Compare sliders (light / dark drag comparison)
+     --------------------------------------------------------------------- */
+  function initCompareSliders() {
+    var frames = document.querySelectorAll("[data-compare-frame]");
+
+    frames.forEach(function (frame) {
+      var handle = frame.querySelector("[data-compare-handle]");
+      var dragging = false;
+
+      function setPos(pct) {
+        pct = Math.max(0, Math.min(100, pct));
+        frame.style.setProperty("--pos", pct + "%");
+        handle.setAttribute("aria-valuenow", String(Math.round(pct)));
+      }
+
+      function pctFromClientX(clientX) {
+        var rect = frame.getBoundingClientRect();
+        return ((clientX - rect.left) / rect.width) * 100;
+      }
+
+      function onPointerMove(e) {
+        if (!dragging) return;
+        setPos(pctFromClientX(e.clientX));
+      }
+      function stopDragging() {
+        dragging = false;
+        window.removeEventListener("pointermove", onPointerMove);
+        window.removeEventListener("pointerup", stopDragging);
+      }
+      function startDragging(e) {
+        dragging = true;
+        setPos(pctFromClientX(e.clientX));
+        window.addEventListener("pointermove", onPointerMove);
+        window.addEventListener("pointerup", stopDragging);
+      }
+
+      frame.addEventListener("pointerdown", startDragging);
+
+      handle.addEventListener("keydown", function (e) {
+        var current = parseFloat(handle.getAttribute("aria-valuenow")) || 50;
+        var step = e.shiftKey ? 20 : 5;
+        if (e.key === "ArrowLeft" || e.key === "ArrowDown") {
+          setPos(current - step);
+          e.preventDefault();
+        } else if (e.key === "ArrowRight" || e.key === "ArrowUp") {
+          setPos(current + step);
+          e.preventDefault();
+        } else if (e.key === "Home") {
+          setPos(0);
+          e.preventDefault();
+        } else if (e.key === "End") {
+          setPos(100);
+          e.preventDefault();
+        }
+      });
+
+      setPos(50);
+    });
+  }
+
+  /* ---------------------------------------------------------------------
+     Scroll reveal
+     --------------------------------------------------------------------- */
+  function initScrollReveal() {
+    var items = document.querySelectorAll(".reveal");
+    if (!("IntersectionObserver" in window) || !items.length) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    items.forEach(function (el) { el.setAttribute("data-reveal-pending", ""); });
+
+    var observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry, index) {
+          if (entry.isIntersecting) {
+            var el = entry.target;
+            setTimeout(function () {
+              el.removeAttribute("data-reveal-pending");
+            }, index * 60);
+            observer.unobserve(el);
+          }
+        });
+      },
+      { threshold: 0.15, rootMargin: "0px 0px -40px 0px" }
+    );
+
+    items.forEach(function (el) { observer.observe(el); });
+  }
+
+  /* ---------------------------------------------------------------------
+     GitHub releases: populate download buttons with live asset links
+     --------------------------------------------------------------------- */
+  var REPO = "Tetracon05/KeepMeTube";
+  var RELEASES_URL = "https://github.com/" + REPO + "/releases";
+
+  function humanSize(bytes) {
+    if (!bytes && bytes !== 0) return "";
+    var units = ["B", "KB", "MB", "GB"];
+    var n = bytes, i = 0;
+    while (n >= 1024 && i < units.length - 1) { n /= 1024; i++; }
+    return (i > 0 ? n.toFixed(n < 10 ? 1 : 0) : n) + " " + units[i];
+  }
+
+  function findAsset(assets, test) {
+    for (var i = 0; i < assets.length; i++) {
+      if (test(assets[i].name.toLowerCase())) return assets[i];
+    }
+    return null;
+  }
+
+  function detectOS() {
+    var platform = (navigator.platform || "").toLowerCase();
+    var ua = navigator.userAgent || "";
+    if (platform.indexOf("mac") !== -1 || /macintosh/i.test(ua)) return "mac";
+    if (platform.indexOf("win") !== -1 || /windows/i.test(ua)) return "windows";
+    if ((platform.indexOf("linux") !== -1 || /linux/i.test(ua)) && !/android/i.test(ua)) return "linux";
+    return null;
+  }
+
+  function detectAppleSilicon() {
+    try {
+      var canvas = document.createElement("canvas");
+      var gl = canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
+      var info = gl && gl.getExtension("WEBGL_debug_renderer_info");
+      var renderer = info ? gl.getParameter(info.UNMASKED_RENDERER_WEBGL) : "";
+      if (/Apple M\d/i.test(renderer) || /Apple GPU/i.test(renderer)) return true;
+      if (/Intel/i.test(renderer)) return false;
+    } catch (e) {}
+    return true; // most active Macs are Apple Silicon by now
+  }
+
+  function setAssetButton(key, asset, label) {
+    var el = document.querySelector('[data-asset="' + key + '"]');
+    if (!el || !asset) return;
+    el.href = asset.browser_download_url;
+    var labelEl = el.querySelector("[data-asset-label]");
+    var text = label + " (" + humanSize(asset.size) + ")";
+    if (labelEl) labelEl.textContent = text; else el.textContent = text;
+  }
+
+  function initReleaseData() {
+    fetch("https://api.github.com/repos/" + REPO + "/releases/latest", {
+      headers: { Accept: "application/vnd.github+json" },
+    })
+      .then(function (res) { if (!res.ok) throw new Error("release fetch failed"); return res.json(); })
+      .then(function (release) {
+        var assets = release.assets || [];
+        var version = release.tag_name || "";
+
+        var macArm = findAsset(assets, function (n) { return n.endsWith(".dmg") && n.indexOf("aarch64") !== -1; });
+        var macIntel = findAsset(assets, function (n) { return n.endsWith(".dmg") && n.indexOf("aarch64") === -1; });
+        var winExe = findAsset(assets, function (n) { return n.endsWith(".exe"); });
+        var winMsi = findAsset(assets, function (n) { return n.endsWith(".msi"); });
+        var linuxAppImage = findAsset(assets, function (n) { return n.endsWith(".appimage"); });
+        var linuxDeb = findAsset(assets, function (n) { return n.endsWith(".deb"); });
+        var linuxRpm = findAsset(assets, function (n) { return n.endsWith(".rpm"); });
+
+        setAssetButton("mac-primary", macArm, "Download for Apple Silicon");
+        setAssetButton("mac-secondary", macIntel, "Intel Mac");
+        setAssetButton("win-primary", winExe, "Download installer");
+        setAssetButton("win-secondary", winMsi, "MSI package");
+        setAssetButton("linux-primary", linuxAppImage, "Download AppImage");
+        setAssetButton("linux-secondary", linuxDeb, ".deb");
+        setAssetButton("linux-tertiary", linuxRpm, ".rpm");
+
+        var versionEls = document.querySelectorAll("[data-version-badge], [data-version-badge-2]");
+        versionEls.forEach(function (el) {
+          el.textContent = version ? "Latest: " + version : el.textContent;
+        });
+
+        var os = detectOS();
+        var mainAsset = null;
+        var mainLabel = "Download";
+        if (os === "mac") {
+          mainAsset = detectAppleSilicon() ? macArm : macIntel;
+          mainLabel = "Download for Mac";
+        } else if (os === "windows") {
+          mainAsset = winExe;
+          mainLabel = "Download for Windows";
+        } else if (os === "linux") {
+          mainAsset = linuxAppImage;
+          mainLabel = "Download for Linux";
+        }
+
+        if (mainAsset) {
+          var ctas = document.querySelectorAll("[data-download-cta]");
+          ctas.forEach(function (cta) { cta.href = mainAsset.browser_download_url; });
+          var labelEl = document.querySelector("[data-download-label]");
+          if (labelEl) labelEl.textContent = mainLabel;
+        }
+      })
+      .catch(function () {
+        var ctas = document.querySelectorAll("[data-download-cta]");
+        ctas.forEach(function (cta) { cta.href = RELEASES_URL; });
+        var labelEl = document.querySelector("[data-download-label]");
+        if (labelEl) labelEl.textContent = "Download on GitHub";
+      });
+  }
+
+  /* ---------------------------------------------------------------------
+     Boot
+     --------------------------------------------------------------------- */
+  initTheme();
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", boot);
+  } else {
+    boot();
+  }
+  function boot() {
+    initMobileNav();
+    initCompareSliders();
+    initScrollReveal();
+    initReleaseData();
+  }
+})();
