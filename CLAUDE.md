@@ -55,6 +55,10 @@ Self-hosted, subset to `latin` + `latin-ext` only (drop cyrillic/vietnamese/gree
 
 `assets/screenshots/*.{webp,png}` are the actual site assets (resized to 1600px wide via `sips`, converted with `cwebp -q 82`, PNG kept as `<picture>` fallback). The top-level `screenshots/` folder is raw source material from the app author, gitignored (`/screenshots/` in `.gitignore` — note the leading slash: without it, the pattern would also match and hide `assets/screenshots/`). If new screenshots come in, they need the same resize+webp treatment before use; don't reference the raw folder from HTML.
 
+### Favicon
+
+`favicon.svg` is the hand-authored source (matches `.logo-mark`); `assets/favicon-32.png`, `assets/favicon-512.png`, and `assets/apple-touch-icon.png` are rendered from it. `favicon.ico` at the repo root is newer and derived differently: it bundles 16/32/48px frames as embedded PNG data (the modern "PNG-in-ICO" container, no legacy BMP encoding) downscaled from `favicon-512.png`. It exists because Google Search's favicon crawler doesn't reliably fall back past an SVG `<link rel="icon">` to the PNG alternative even when one is declared — `favicon.ico` is listed first in index.html's icon `<link>`s specifically so a crawler that can't handle SVG still finds a format it can. There's no ImageMagick/Pillow in this toolchain, so it's hand-assembled: a short ICONDIR/ICONDIRENTRY header written directly around the raw PNG bytes, no library. If the logo changes, regenerate it the same way — downscale a high-res PNG to 16/32/48px and re-wrap.
+
 ### SEO
 
 `robots.txt`, `sitemap.xml`, the JSON-LD `SoftwareApplication` block, and the `og:url`/canonical tags in `index.html` all hardcode `https://keepmetube.t3tracon.com.tr/`. Update all of them together if the domain ever changes — nothing derives this from a single source of truth.
