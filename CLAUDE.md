@@ -4,17 +4,18 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-The marketing/download site for [KeepMeTube](https://github.com/Tetracon05/KeepMeTube), a Tauri desktop app. Plain HTML/CSS/JS — no framework, no build step, no npm dependencies. Deployed as-is via GitHub Pages to `keepmetube.t3tracon.com.tr`.
+The marketing/download site for [KeepMeTube](https://github.com/Tetracon05/KeepMeTube), a Tauri desktop app. Plain HTML/CSS/JS — no framework, no npm dependencies. Deployed as-is via GitHub Pages to `keepmetube.t3tracon.com.tr`, in all 10 languages the app itself supports (see "Internationalization" below).
 
 ## Commands
 
-There is no build step. Preview by serving the directory over HTTP (opening `index.html` directly via `file://` will break the download-button JS due to CORS on the `fetch()` call to the GitHub API):
+Deployment has no build step — GitHub Pages just serves whatever static HTML is committed. Editing content, however, goes through a local generator (see "Internationalization"): don't hand-edit `index.html` or `<lang>/index.html` directly, edit `templates/page.html` and/or `locales/*.json` and re-run it.
 
 ```bash
-python3 -m http.server 4173   # then open http://localhost:4173
+python scripts/build_pages.py   # regenerates every language's index.html + sitemap.xml
+python3 -m http.server 4173     # then open http://localhost:4173
 ```
 
-`.claude/launch.json` runs the same command for Claude Code's browser-preview tooling. There are no lint/test/typecheck scripts — this is static markup, reviewed by hand.
+(`python3` vs `python` depends on the machine — use whichever resolves to a real Python 3 interpreter locally.) `.claude/launch.json` runs the `http.server` command for Claude Code's browser-preview tooling. There are no lint/test/typecheck scripts for the generated markup itself — it's reviewed by hand after each `build_pages.py` run.
 
 ## Deployment
 
@@ -28,10 +29,18 @@ HTTPS is auto-provisioned by GitHub (Let's Encrypt) once it detects the DNS reco
 
 ## Architecture
 
-Everything is one page (`index.html`) with three asset files:
+One page, generated in 10 languages, sharing three asset files:
 - `css/style.css` — design tokens + every component style
 - `css/fonts.css` — generated `@font-face` declarations, see "Fonts" below; don't hand-edit
 - `js/main.js` — theme switching, mobile nav, the compare sliders, and the GitHub Releases integration
+
+### Internationalization (`templates/`, `locales/`, `scripts/build_pages.py`)
+
+`index.html` (English, at the repo root) and `tr/index.html`, `es/index.html`, `fr/index.html`, `de/index.html`, `pt/index.html`, `ar/index.html`, `ja/index.html`, `ko/index.html`, `zh/index.html` are all **generated** — `scripts/build_pages.py` renders `templates/page.html` once per language, substituting `{{token}}` placeholders with the matching `locales/<lang>.json` strings, and also regenerates `sitemap.xml` (with a full hreflang `<xhtml:link>` set per URL) from the same `LANGUAGES` table. This is a local authoring tool only — nothing about deployment changes; GitHub Pages still serves the committed static HTML with zero server-side or request-time build step. The point is to avoid hand-syncing ~300 lines of identical header/footer/icon-defs/script-tag markup across 10 files every time something shared changes.
+
+**To change shared structure** (a new section, a CSS/animation change that touches markup, a new icon): edit `templates/page.html`, then `python scripts/build_pages.py`. **To change copy in one language**: edit that language's `locales/<lang>.json`, then rebuild. **To add a language**: add an entry to the `LANGUAGES` dict in `scripts/build_pages.py` (URL segment, `og:locale`, display name) and a matching `locales/<lang>.json` with every key the other locale files have, then rebuild — the language list is intentionally hardcoded to match the app's own `src/lib/i18n.ts`, not derived automatically, so if the app adds a language this needs a manual follow-up here too.
+
+The `<lang>` URL segment is a plain subdirectory (`/tr/`, `/es/`, ...) with English kept at the root for URL stability; this is what the sitemap/hreflang/canonical tags all assume. Two runtime pieces stay locale-aware even though `js/main.js` itself is one shared file across all 10 pages: `initReleaseData()`'s download-button labels come from an `ASSET_LABELS` table keyed by `document.documentElement.lang` (these strings are injected after the GitHub Releases fetch resolves, so they can't live in the static per-language HTML the way everything else does), and `css/style.css` uses `text-align: start` (not `left`) so body copy mirrors correctly under `/ar/`'s `dir="rtl"`. The compare-slider and hero/showcase screenshots are **not** re-shot per language (regenerating those means running the desktop app itself in each locale) — every language page reuses the same English-UI hero/showcase shots and the same Turkish-UI compare-slider shots that English already used, with only the surrounding caption text translated.
 
 ### Design tokens must match the app
 
@@ -61,7 +70,9 @@ Self-hosted, subset to `latin` + `latin-ext` only (drop cyrillic/vietnamese/gree
 
 ### SEO
 
-`robots.txt`, `sitemap.xml`, the JSON-LD `SoftwareApplication` block, and the `og:url`/canonical tags in `index.html` all hardcode `https://keepmetube.t3tracon.com.tr/`. Update all of them together if the domain ever changes — nothing derives this from a single source of truth.
+`robots.txt` and the `SITE_URL` constant in `scripts/build_pages.py` hardcode `https://keepmetube.t3tracon.com.tr`. `sitemap.xml` and every page's canonical/hreflang/`og:url`/JSON-LD `url` are derived from that one constant at build time — update `SITE_URL` and `CNAME`/DNS (see "Deployment") together if the domain ever changes, then rebuild; don't hand-edit the generated URLs in the HTML or sitemap.
+
+Each language's `<title>`/meta description/JSON-LD `description` isn't just a translation of the English copy — it's deliberately written to name the concrete things people search for (e.g. Turkish targets "mp3 indir" / "mp4 indir" phrasing, English targets "YouTube to MP3/MP4 downloader") rather than just the KeepMeTube brand name, since that's real content addressing real search intent, not meta-keyword stuffing. Keep that framing when editing a locale's title/description strings.
 
 ## Two CSS gotchas already fixed here — don't reintroduce them
 

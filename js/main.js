@@ -345,9 +345,31 @@
 
   /* ---------------------------------------------------------------------
      GitHub releases: populate download buttons with live asset links
+
+     Labels below are injected at runtime (after the release fetch
+     resolves), so they can't come from the static per-language HTML the
+     way the rest of the page's text does -- they're kept here instead,
+     one small table per language, picked by document.documentElement.lang.
      --------------------------------------------------------------------- */
   var REPO = "Tetracon05/KeepMeTube";
   var RELEASES_URL = "https://github.com/" + REPO + "/releases";
+
+  var ASSET_LABELS = {
+    en: { macArm: "Download for Apple Silicon", macIntel: "Intel Mac", winExe: "Download installer", winMsi: "MSI package", linuxAppImage: "Download AppImage", mac: "Download for Mac", windows: "Download for Windows", linux: "Download for Linux", github: "Download on GitHub", latest: "Latest: " },
+    tr: { macArm: "Apple Silicon için indir", macIntel: "Intel Mac", winExe: "Kurulum dosyasını indir", winMsi: "MSI paketi", linuxAppImage: "AppImage indir", mac: "Mac için indir", windows: "Windows için indir", linux: "Linux için indir", github: "GitHub'dan indir", latest: "Son sürüm: " },
+    es: { macArm: "Descargar para Apple Silicon", macIntel: "Mac Intel", winExe: "Descargar instalador", winMsi: "Paquete MSI", linuxAppImage: "Descargar AppImage", mac: "Descargar para Mac", windows: "Descargar para Windows", linux: "Descargar para Linux", github: "Descargar desde GitHub", latest: "Última versión: " },
+    fr: { macArm: "Télécharger pour Apple Silicon", macIntel: "Mac Intel", winExe: "Télécharger l'installeur", winMsi: "Paquet MSI", linuxAppImage: "Télécharger l'AppImage", mac: "Télécharger pour Mac", windows: "Télécharger pour Windows", linux: "Télécharger pour Linux", github: "Télécharger depuis GitHub", latest: "Dernière version : " },
+    de: { macArm: "Für Apple Silicon herunterladen", macIntel: "Intel-Mac", winExe: "Installer herunterladen", winMsi: "MSI-Paket", linuxAppImage: "AppImage herunterladen", mac: "Für Mac herunterladen", windows: "Für Windows herunterladen", linux: "Für Linux herunterladen", github: "Von GitHub herunterladen", latest: "Neueste Version: " },
+    pt: { macArm: "Baixar para Apple Silicon", macIntel: "Mac Intel", winExe: "Baixar instalador", winMsi: "Pacote MSI", linuxAppImage: "Baixar AppImage", mac: "Baixar para Mac", windows: "Baixar para Windows", linux: "Baixar para Linux", github: "Baixar do GitHub", latest: "Mais recente: " },
+    ar: { macArm: "تحميل لمعالج Apple Silicon", macIntel: "Mac بمعالج Intel", winExe: "تحميل المثبّت", winMsi: "حزمة MSI", linuxAppImage: "تحميل AppImage", mac: "تحميل لنظام Mac", windows: "تحميل لنظام Windows", linux: "تحميل لنظام Linux", github: "تحميل من GitHub", latest: "أحدث إصدار: " },
+    ja: { macArm: "Apple Silicon版をダウンロード", macIntel: "Intel Mac版", winExe: "インストーラーをダウンロード", winMsi: "MSIパッケージ", linuxAppImage: "AppImageをダウンロード", mac: "Mac版をダウンロード", windows: "Windows版をダウンロード", linux: "Linux版をダウンロード", github: "GitHubからダウンロード", latest: "最新版: " },
+    ko: { macArm: "Apple Silicon용 다운로드", macIntel: "Intel Mac", winExe: "설치 프로그램 다운로드", winMsi: "MSI 패키지", linuxAppImage: "AppImage 다운로드", mac: "Mac용 다운로드", windows: "Windows용 다운로드", linux: "Linux용 다운로드", github: "GitHub에서 다운로드", latest: "최신 버전: " },
+    "zh-Hans": { macArm: "下载 Apple Silicon 版", macIntel: "Intel Mac", winExe: "下载安装程序", winMsi: "MSI 安装包", linuxAppImage: "下载 AppImage", mac: "下载 Mac 版", windows: "下载 Windows 版", linux: "下载 Linux 版", github: "从 GitHub 下载", latest: "最新版本： " }
+  };
+
+  function assetLabels() {
+    return ASSET_LABELS[document.documentElement.lang] || ASSET_LABELS.en;
+  }
 
   function humanSize(bytes) {
     if (!bytes && bytes !== 0) return "";
@@ -411,31 +433,33 @@
         var linuxDeb = findAsset(assets, function (n) { return n.endsWith(".deb"); });
         var linuxRpm = findAsset(assets, function (n) { return n.endsWith(".rpm"); });
 
-        setAssetButton("mac-primary", macArm, "Download for Apple Silicon");
-        setAssetButton("mac-secondary", macIntel, "Intel Mac");
-        setAssetButton("win-primary", winExe, "Download installer");
-        setAssetButton("win-secondary", winMsi, "MSI package");
-        setAssetButton("linux-primary", linuxAppImage, "Download AppImage");
+        var labels = assetLabels();
+
+        setAssetButton("mac-primary", macArm, labels.macArm);
+        setAssetButton("mac-secondary", macIntel, labels.macIntel);
+        setAssetButton("win-primary", winExe, labels.winExe);
+        setAssetButton("win-secondary", winMsi, labels.winMsi);
+        setAssetButton("linux-primary", linuxAppImage, labels.linuxAppImage);
         setAssetButton("linux-secondary", linuxDeb, ".deb");
         setAssetButton("linux-tertiary", linuxRpm, ".rpm");
 
         var versionEls = document.querySelectorAll("[data-version-badge], [data-version-badge-2]");
         versionEls.forEach(function (el) {
-          el.textContent = version ? "Latest: " + version : el.textContent;
+          el.textContent = version ? labels.latest + version : el.textContent;
         });
 
         var os = detectOS();
         var mainAsset = null;
-        var mainLabel = "Download";
+        var mainLabel = null;
         if (os === "mac") {
           mainAsset = detectAppleSilicon() ? macArm : macIntel;
-          mainLabel = "Download for Mac";
+          mainLabel = labels.mac;
         } else if (os === "windows") {
           mainAsset = winExe;
-          mainLabel = "Download for Windows";
+          mainLabel = labels.windows;
         } else if (os === "linux") {
           mainAsset = linuxAppImage;
-          mainLabel = "Download for Linux";
+          mainLabel = labels.linux;
         }
 
         if (mainAsset) {
@@ -449,7 +473,7 @@
         var ctas = document.querySelectorAll("[data-download-cta]");
         ctas.forEach(function (cta) { cta.href = RELEASES_URL; });
         var labelEl = document.querySelector("[data-download-label]");
-        if (labelEl) labelEl.textContent = "Download on GitHub";
+        if (labelEl) labelEl.textContent = assetLabels().github;
       });
   }
 

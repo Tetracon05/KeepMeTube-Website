@@ -600,7 +600,7 @@ section[id] { scroll-margin-top: calc(var(--header-h) + var(--sp-4)); }
 }
 
 @media (min-width: 700px) {
-  .platform-strip__inner { flex-direction: row; text-align: left; }
+  .platform-strip__inner { flex-direction: row; text-align: start; }
 }
 
 /* ==========================================================================
@@ -636,7 +636,7 @@ section.compare-section, section.features, section.showcase, section.download {
 /* ==========================================================================
    Compare / slider
    ========================================================================== */
-.compare-block { margin-top: var(--sp-8); text-align: left; }
+.compare-block { margin-top: var(--sp-8); text-align: start; }
 .compare-block__head {
   display: flex;
   flex-wrap: wrap;
@@ -756,7 +756,7 @@ section.compare-section, section.features, section.showcase, section.download {
   grid-template-columns: 1fr;
   gap: var(--sp-4);
   margin-top: var(--sp-7);
-  text-align: left;
+  text-align: start;
 }
 .feature-card {
   position: relative;
@@ -810,7 +810,7 @@ section.compare-section, section.features, section.showcase, section.download {
   grid-template-columns: 1fr;
   gap: var(--sp-6);
   margin-top: var(--sp-7);
-  text-align: left;
+  text-align: start;
 }
 .showcase-item picture {
   display: block;
@@ -844,7 +844,7 @@ section.compare-section, section.features, section.showcase, section.download {
   grid-template-columns: 1fr;
   gap: var(--sp-4);
   margin-top: var(--sp-7);
-  text-align: left;
+  text-align: start;
 }
 .platform-card {
   position: relative;
@@ -900,7 +900,7 @@ section.compare-section, section.features, section.showcase, section.download {
 .callout {
   display: flex;
   gap: var(--sp-3);
-  text-align: left;
+  text-align: start;
   background: var(--bg-1);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
@@ -957,7 +957,7 @@ section.compare-section, section.features, section.showcase, section.download {
 .footer__fine { font-size: var(--fs-xs); color: var(--ink-1); max-width: 60ch; }
 
 @media (min-width: 780px) {
-  .footer__inner { flex-direction: row; justify-content: space-between; text-align: left; }
+  .footer__inner { flex-direction: row; justify-content: space-between; text-align: start; }
 }
 
 /* ==========================================================================

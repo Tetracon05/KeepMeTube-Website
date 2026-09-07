@@ -1,8 +1,173 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://keepmetube.t3tracon.com.tr/</loc>
-    <lastmod>2026-09-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://keepmetube.t3tracon.com.tr/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://keepmetube.t3tracon.com.tr/tr/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://keepmetube.t3tracon.com.tr/es/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://keepmetube.t3tracon.com.tr/fr/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://keepmetube.t3tracon.com.tr/de/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://keepmetube.t3tracon.com.tr/pt/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://keepmetube.t3tracon.com.tr/ar/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://keepmetube.t3tracon.com.tr/ja/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://keepmetube.t3tracon.com.tr/ko/"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://keepmetube.t3tracon.com.tr/zh/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://keepmetube.t3tracon.com.tr/"/>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://keepmetube.t3tracon.com.tr/tr/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://keepmetube.t3tracon.com.tr/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://keepmetube.t3tracon.com.tr/tr/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://keepmetube.t3tracon.com.tr/es/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://keepmetube.t3tracon.com.tr/fr/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://keepmetube.t3tracon.com.tr/de/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://keepmetube.t3tracon.com.tr/pt/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://keepmetube.t3tracon.com.tr/ar/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://keepmetube.t3tracon.com.tr/ja/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://keepmetube.t3tracon.com.tr/ko/"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://keepmetube.t3tracon.com.tr/zh/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://keepmetube.t3tracon.com.tr/"/>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://keepmetube.t3tracon.com.tr/es/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://keepmetube.t3tracon.com.tr/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://keepmetube.t3tracon.com.tr/tr/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://keepmetube.t3tracon.com.tr/es/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://keepmetube.t3tracon.com.tr/fr/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://keepmetube.t3tracon.com.tr/de/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://keepmetube.t3tracon.com.tr/pt/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://keepmetube.t3tracon.com.tr/ar/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://keepmetube.t3tracon.com.tr/ja/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://keepmetube.t3tracon.com.tr/ko/"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://keepmetube.t3tracon.com.tr/zh/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://keepmetube.t3tracon.com.tr/"/>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://keepmetube.t3tracon.com.tr/fr/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://keepmetube.t3tracon.com.tr/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://keepmetube.t3tracon.com.tr/tr/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://keepmetube.t3tracon.com.tr/es/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://keepmetube.t3tracon.com.tr/fr/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://keepmetube.t3tracon.com.tr/de/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://keepmetube.t3tracon.com.tr/pt/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://keepmetube.t3tracon.com.tr/ar/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://keepmetube.t3tracon.com.tr/ja/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://keepmetube.t3tracon.com.tr/ko/"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://keepmetube.t3tracon.com.tr/zh/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://keepmetube.t3tracon.com.tr/"/>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://keepmetube.t3tracon.com.tr/de/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://keepmetube.t3tracon.com.tr/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://keepmetube.t3tracon.com.tr/tr/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://keepmetube.t3tracon.com.tr/es/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://keepmetube.t3tracon.com.tr/fr/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://keepmetube.t3tracon.com.tr/de/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://keepmetube.t3tracon.com.tr/pt/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://keepmetube.t3tracon.com.tr/ar/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://keepmetube.t3tracon.com.tr/ja/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://keepmetube.t3tracon.com.tr/ko/"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://keepmetube.t3tracon.com.tr/zh/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://keepmetube.t3tracon.com.tr/"/>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://keepmetube.t3tracon.com.tr/pt/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://keepmetube.t3tracon.com.tr/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://keepmetube.t3tracon.com.tr/tr/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://keepmetube.t3tracon.com.tr/es/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://keepmetube.t3tracon.com.tr/fr/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://keepmetube.t3tracon.com.tr/de/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://keepmetube.t3tracon.com.tr/pt/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://keepmetube.t3tracon.com.tr/ar/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://keepmetube.t3tracon.com.tr/ja/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://keepmetube.t3tracon.com.tr/ko/"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://keepmetube.t3tracon.com.tr/zh/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://keepmetube.t3tracon.com.tr/"/>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://keepmetube.t3tracon.com.tr/ar/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://keepmetube.t3tracon.com.tr/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://keepmetube.t3tracon.com.tr/tr/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://keepmetube.t3tracon.com.tr/es/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://keepmetube.t3tracon.com.tr/fr/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://keepmetube.t3tracon.com.tr/de/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://keepmetube.t3tracon.com.tr/pt/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://keepmetube.t3tracon.com.tr/ar/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://keepmetube.t3tracon.com.tr/ja/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://keepmetube.t3tracon.com.tr/ko/"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://keepmetube.t3tracon.com.tr/zh/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://keepmetube.t3tracon.com.tr/"/>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://keepmetube.t3tracon.com.tr/ja/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://keepmetube.t3tracon.com.tr/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://keepmetube.t3tracon.com.tr/tr/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://keepmetube.t3tracon.com.tr/es/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://keepmetube.t3tracon.com.tr/fr/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://keepmetube.t3tracon.com.tr/de/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://keepmetube.t3tracon.com.tr/pt/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://keepmetube.t3tracon.com.tr/ar/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://keepmetube.t3tracon.com.tr/ja/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://keepmetube.t3tracon.com.tr/ko/"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://keepmetube.t3tracon.com.tr/zh/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://keepmetube.t3tracon.com.tr/"/>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://keepmetube.t3tracon.com.tr/ko/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://keepmetube.t3tracon.com.tr/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://keepmetube.t3tracon.com.tr/tr/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://keepmetube.t3tracon.com.tr/es/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://keepmetube.t3tracon.com.tr/fr/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://keepmetube.t3tracon.com.tr/de/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://keepmetube.t3tracon.com.tr/pt/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://keepmetube.t3tracon.com.tr/ar/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://keepmetube.t3tracon.com.tr/ja/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://keepmetube.t3tracon.com.tr/ko/"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://keepmetube.t3tracon.com.tr/zh/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://keepmetube.t3tracon.com.tr/"/>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://keepmetube.t3tracon.com.tr/zh/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://keepmetube.t3tracon.com.tr/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://keepmetube.t3tracon.com.tr/tr/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://keepmetube.t3tracon.com.tr/es/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://keepmetube.t3tracon.com.tr/fr/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://keepmetube.t3tracon.com.tr/de/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://keepmetube.t3tracon.com.tr/pt/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://keepmetube.t3tracon.com.tr/ar/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://keepmetube.t3tracon.com.tr/ja/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://keepmetube.t3tracon.com.tr/ko/"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://keepmetube.t3tracon.com.tr/zh/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://keepmetube.t3tracon.com.tr/"/>
+    <lastmod>2026-09-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
