@@ -165,6 +165,29 @@
 <symbol id="icon-drag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
   <path d="M9 6 5 12l4 6M15 6l4 6-4 6"/>
 </symbol>
+<symbol id="icon-playlist" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M4 6h12M4 11h12M4 16h7"/>
+  <circle cx="18" cy="17" r="4"/>
+  <path d="M16.7 15.3v3.4l3-1.7-3-1.7Z" fill="currentColor" stroke="none"/>
+</symbol>
+<symbol id="icon-clipboard" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="6" y="5.5" width="12" height="15" rx="1.6"/>
+  <path d="M9.5 5.5V4.3a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1V5.5"/>
+</symbol>
+<symbol id="icon-captions" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="3" y="6" width="18" height="12" rx="2"/>
+  <path d="M7 11h4M7 14h7M14 11h3"/>
+</symbol>
+<symbol id="icon-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="10.5" cy="10.5" r="6.5"/>
+  <path d="M20 20l-4.8-4.8"/>
+</symbol>
+<symbol id="icon-sliders" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M4 7h10M17 7h3M4 12h4M11 12h9M4 17h13M20 17h1"/>
+  <circle cx="14" cy="7" r="2" fill="var(--bg-1)"/>
+  <circle cx="8" cy="12" r="2" fill="var(--bg-1)"/>
+  <circle cx="17" cy="17" r="2" fill="var(--bg-1)"/>
+</symbol>
 </defs>
 </svg>
 
@@ -180,6 +203,7 @@
     <nav class="site-nav" aria-label="Primary">
       <a href="#features">Funciones</a>
       <a href="#compare">Claro y oscuro</a>
+      <a href="#playlists">Listas de reproducción</a>
       <a href="#screenshots">Capturas</a>
       <a href="#download">Descargar</a>
     </nav>
@@ -210,6 +234,7 @@
 <div class="mobile-nav" id="mobile-nav" data-mobile-nav hidden>
   <a href="#features">Funciones</a>
   <a href="#compare">Claro y oscuro</a>
+  <a href="#playlists">Listas de reproducción</a>
   <a href="#screenshots">Capturas</a>
   <a href="#download">Descargar</a>
   <a href="https://github.com/Tetracon05/KeepMeTube">GitHub</a>
@@ -276,7 +301,7 @@
       <div class="compare-block reveal">
         <div class="compare-block__head">
           <h3>Cola de descargas</h3>
-          <p>Progreso, velocidad de transferencia e historial de cada descarga, de un vistazo.</p>
+          <p>Progreso, velocidad de transferencia e historial de cada descarga, de más reciente a más antigua — filtra la lista, reintenta una descarga fallida o entra en la cola de una lista de reproducción.</p>
         </div>
         <div class="compare" data-compare>
           <div class="compare__frame" data-compare-frame style="aspect-ratio: 1600 / 1131;">
@@ -302,7 +327,7 @@
       <div class="compare-block reveal">
         <div class="compare-block__head">
           <h3>Añadir una descarga</h3>
-          <p>Elige una resolución y un contenedor, luego adjunta cookies para contenido con restricción de edad o exclusivo para miembros.</p>
+          <p>Elige una resolución y un contenedor, luego adjunta cookies para contenido con restricción de edad o exclusivo para miembros. Pega uno o varios enlaces — el campo puede incluso autocompletarse desde tu portapapeles.</p>
         </div>
         <div class="compare" data-compare>
           <div class="compare__frame" data-compare-frame style="aspect-ratio: 1600 / 1131;">
@@ -326,6 +351,30 @@
       </div>
 
       <p class="compare-note">Mostrado en turco — uno de los 10 idiomas integrados en KeepMeTube.</p>
+    </div>
+  </section>
+
+  <section class="showcase" id="playlists">
+    <div class="wrap">
+      <h2>Listas de reproducción, resueltas</h2>
+      <p class="section-lead">Pega el enlace de una lista de reproducción y KeepMeTube la analiza, para que puedas elegir exactamente qué vídeos descargar y ponerlos todos en cola a la vez. Cada lista de reproducción se agrupa en una sola fila de tu lista de descargas — con una vista detallada de lo que está en cola — y se guarda en su propia subcarpeta, con el nombre de la lista de reproducción.</p>
+
+      <div class="showcase-grid">
+        <figure class="showcase-item reveal">
+          <picture>
+            <source srcset="/assets/screenshots/playlist-picker-dark.webp" type="image/webp">
+            <img src="/assets/screenshots/playlist-picker-dark.png" alt="Ventana de añadir descarga mostrando una lista de reproducción de YouTube analizada llamada Damnation con 8 vídeos listados y todos seleccionados para descargar" width="1600" height="1131" loading="lazy">
+          </picture>
+          <figcaption><strong>Elige lo que quieres.</strong> KeepMeTube lee toda la lista de reproducción y enumera cada vídeo — selecciona todos, o solo los que necesitas, antes de ponerlos en cola.</figcaption>
+        </figure>
+        <figure class="showcase-item reveal">
+          <picture>
+            <source srcset="/assets/screenshots/playlist-list-dark.webp" type="image/webp">
+            <img src="/assets/screenshots/playlist-list-dark.png" alt="Lista de descargas dentro de la lista de reproducción Damnation, mostrando las 8 pistas completadas con su tamaño de archivo y progreso individual" width="1600" height="1134" loading="lazy">
+          </picture>
+          <figcaption><strong>Agrupadas, no dispersas.</strong> Las listas de reproducción se agrupan en una fila de tu lista de descargas; entra para ver el progreso y estado de cada pista.</figcaption>
+        </figure>
+      </div>
     </div>
   </section>
 
@@ -368,7 +417,7 @@
         <li class="feature-card reveal">
           <svg class="icon icon--feature" aria-hidden="true"><use href="#icon-stack"></use></svg>
           <h3>Cola inteligente</h3>
-          <p>Hasta 3 descargas se ejecutan a la vez; el resto espera su turno automáticamente.</p>
+          <p>Las descargas se ejecutan automáticamente hasta el límite que elijas; el resto espera su turno.</p>
         </li>
         <li class="feature-card reveal">
           <svg class="icon icon--feature" aria-hidden="true"><use href="#icon-history"></use></svg>
@@ -379,6 +428,31 @@
           <svg class="icon icon--feature" aria-hidden="true"><use href="#icon-folder"></use></svg>
           <h3>Operaciones de archivo integradas</h3>
           <p>Renombra, muestra en el Finder o el Explorador, o elimina las descargas terminadas sin salir de la aplicación.</p>
+        </li>
+        <li class="feature-card reveal">
+          <svg class="icon icon--feature" aria-hidden="true"><use href="#icon-playlist"></use></svg>
+          <h3>Listas de reproducción completas</h3>
+          <p>Pega el enlace de una lista de reproducción, elige exactamente qué vídeos descargar y ponlos todos en cola — agrupados en una sola fila, guardados en su propia subcarpeta.</p>
+        </li>
+        <li class="feature-card reveal">
+          <svg class="icon icon--feature" aria-hidden="true"><use href="#icon-clipboard"></use></svg>
+          <h3>Pega y listo</h3>
+          <p>Pon en cola varios enlaces a la vez, o deja que KeepMeTube autocomplete la URL desde tu portapapeles.</p>
+        </li>
+        <li class="feature-card reveal">
+          <svg class="icon icon--feature" aria-hidden="true"><use href="#icon-captions"></use></svg>
+          <h3>Subtítulos, miniaturas y etiquetas</h3>
+          <p>Descarga subtítulos, incrusta la miniatura y escribe metadatos de título y artista en el archivo — todo opcional, por descarga.</p>
+        </li>
+        <li class="feature-card reveal">
+          <svg class="icon icon--feature" aria-hidden="true"><use href="#icon-search"></use></svg>
+          <h3>Encuéntrala, reinténtala</h3>
+          <p>Filtra una lista de descargas larga mientras escribes, y reintenta cualquier descarga fallida con un clic.</p>
+        </li>
+        <li class="feature-card reveal">
+          <svg class="icon icon--feature" aria-hidden="true"><use href="#icon-sliders"></use></svg>
+          <h3>Define tus valores por defecto</h3>
+          <p>Elige una carpeta de guardado predeterminada y una plantilla de nombre de archivo, y ajusta cuántas descargas se ejecutan a la vez.</p>
         </li>
       </ul>
     </div>
@@ -403,6 +477,13 @@
             <img src="/assets/screenshots/progress-light.png" alt="Lista de descargas en modo claro con una descarga activa al 9,1 por ciento y una velocidad de transferencia de 11,92 MiB por segundo" width="1600" height="1111" loading="lazy">
           </picture>
           <figcaption><strong>Cifras en las que puedes confiar.</strong> El porcentaje y la velocidad se leen directamente de la propia salida de yt-dlp, en vivo.</figcaption>
+        </figure>
+        <figure class="showcase-item reveal">
+          <picture>
+            <source srcset="/assets/screenshots/settings-dark.webp" type="image/webp">
+            <img src="/assets/screenshots/settings-dark.png" alt="Panel de ajustes de KeepMeTube mostrando la ubicación de descarga predeterminada, la plantilla de nombre de archivo y los controles de descargas simultáneas" width="1600" height="1131" loading="lazy">
+          </picture>
+          <figcaption><strong>Tus valores por defecto, a tu manera.</strong> Elige una carpeta de guardado predeterminada, una plantilla de nombre de archivo y cuántas descargas se ejecutan a la vez.</figcaption>
         </figure>
       </div>
     </div>

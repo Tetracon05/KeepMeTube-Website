@@ -165,6 +165,29 @@
 <symbol id="icon-drag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
   <path d="M9 6 5 12l4 6M15 6l4 6-4 6"/>
 </symbol>
+<symbol id="icon-playlist" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M4 6h12M4 11h12M4 16h7"/>
+  <circle cx="18" cy="17" r="4"/>
+  <path d="M16.7 15.3v3.4l3-1.7-3-1.7Z" fill="currentColor" stroke="none"/>
+</symbol>
+<symbol id="icon-clipboard" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="6" y="5.5" width="12" height="15" rx="1.6"/>
+  <path d="M9.5 5.5V4.3a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1V5.5"/>
+</symbol>
+<symbol id="icon-captions" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="3" y="6" width="18" height="12" rx="2"/>
+  <path d="M7 11h4M7 14h7M14 11h3"/>
+</symbol>
+<symbol id="icon-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="10.5" cy="10.5" r="6.5"/>
+  <path d="M20 20l-4.8-4.8"/>
+</symbol>
+<symbol id="icon-sliders" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M4 7h10M17 7h3M4 12h4M11 12h9M4 17h13M20 17h1"/>
+  <circle cx="14" cy="7" r="2" fill="var(--bg-1)"/>
+  <circle cx="8" cy="12" r="2" fill="var(--bg-1)"/>
+  <circle cx="17" cy="17" r="2" fill="var(--bg-1)"/>
+</symbol>
 </defs>
 </svg>
 
@@ -180,6 +203,7 @@
     <nav class="site-nav" aria-label="Primary">
       <a href="#features">Features</a>
       <a href="#compare">Light &amp; dark</a>
+      <a href="#playlists">Playlists</a>
       <a href="#screenshots">Screenshots</a>
       <a href="#download">Download</a>
     </nav>
@@ -210,6 +234,7 @@
 <div class="mobile-nav" id="mobile-nav" data-mobile-nav hidden>
   <a href="#features">Features</a>
   <a href="#compare">Light &amp; dark</a>
+  <a href="#playlists">Playlists</a>
   <a href="#screenshots">Screenshots</a>
   <a href="#download">Download</a>
   <a href="https://github.com/Tetracon05/KeepMeTube">GitHub</a>
@@ -276,7 +301,7 @@
       <div class="compare-block reveal">
         <div class="compare-block__head">
           <h3>Download queue</h3>
-          <p>Progress, transfer speed, and history for every download, at a glance.</p>
+          <p>Progress, transfer speed, and history for every download, newest first — filter the list, retry a failed one, or drill into a playlist's queue.</p>
         </div>
         <div class="compare" data-compare>
           <div class="compare__frame" data-compare-frame style="aspect-ratio: 1600 / 1131;">
@@ -302,7 +327,7 @@
       <div class="compare-block reveal">
         <div class="compare-block__head">
           <h3>Add a download</h3>
-          <p>Pick a resolution and container, then attach cookies for age-restricted or member-only content.</p>
+          <p>Pick a resolution and container, then attach cookies for age-restricted or member-only content. Paste one link or several — the field can even auto-fill from your clipboard.</p>
         </div>
         <div class="compare" data-compare>
           <div class="compare__frame" data-compare-frame style="aspect-ratio: 1600 / 1131;">
@@ -326,6 +351,30 @@
       </div>
 
       <p class="compare-note">Shown in Türkçe — one of the 10 languages built into KeepMeTube.</p>
+    </div>
+  </section>
+
+  <section class="showcase" id="playlists">
+    <div class="wrap">
+      <h2>Whole playlists, handled</h2>
+      <p class="section-lead">Paste a playlist link and KeepMeTube analyzes it, so you can pick exactly which videos to grab and queue them all at once. Each playlist collapses into a single row in your download list — with a drill-down view for what's queued — and saves into its own subfolder, named after the playlist.</p>
+
+      <div class="showcase-grid">
+        <figure class="showcase-item reveal">
+          <picture>
+            <source srcset="/assets/screenshots/playlist-picker-dark.webp" type="image/webp">
+            <img src="/assets/screenshots/playlist-picker-dark.png" alt="Add Download dialog showing an analyzed YouTube playlist named Damnation with 8 videos listed and all selected for download" width="1600" height="1131" loading="lazy">
+          </picture>
+          <figcaption><strong>Pick what you want.</strong> KeepMeTube reads the whole playlist and lists every video — select all, or just the ones you need, before queuing.</figcaption>
+        </figure>
+        <figure class="showcase-item reveal">
+          <picture>
+            <source srcset="/assets/screenshots/playlist-list-dark.webp" type="image/webp">
+            <img src="/assets/screenshots/playlist-list-dark.png" alt="Download list drilled into the Damnation playlist, showing all 8 tracks completed with individual file size and progress" width="1600" height="1134" loading="lazy">
+          </picture>
+          <figcaption><strong>Grouped, not scattered.</strong> Playlists collapse into one row in your download list; drill in to see each track's own progress and status.</figcaption>
+        </figure>
+      </div>
     </div>
   </section>
 
@@ -368,7 +417,7 @@
         <li class="feature-card reveal">
           <svg class="icon icon--feature" aria-hidden="true"><use href="#icon-stack"></use></svg>
           <h3>Smart queue</h3>
-          <p>Up to 3 downloads run at once; the rest wait their turn automatically.</p>
+          <p>Downloads run automatically, up to a limit you choose — the rest wait their turn.</p>
         </li>
         <li class="feature-card reveal">
           <svg class="icon icon--feature" aria-hidden="true"><use href="#icon-history"></use></svg>
@@ -379,6 +428,31 @@
           <svg class="icon icon--feature" aria-hidden="true"><use href="#icon-folder"></use></svg>
           <h3>File operations built in</h3>
           <p>Rename, reveal in Finder or Explorer, or delete finished downloads without leaving the app.</p>
+        </li>
+        <li class="feature-card reveal">
+          <svg class="icon icon--feature" aria-hidden="true"><use href="#icon-playlist"></use></svg>
+          <h3>Whole playlists at once</h3>
+          <p>Paste a playlist link, pick exactly which videos to grab, and queue them all — grouped into one row, saved into their own subfolder.</p>
+        </li>
+        <li class="feature-card reveal">
+          <svg class="icon icon--feature" aria-hidden="true"><use href="#icon-clipboard"></use></svg>
+          <h3>Paste, and go</h3>
+          <p>Queue several links at once, or let KeepMeTube auto-fill the URL from your clipboard.</p>
+        </li>
+        <li class="feature-card reveal">
+          <svg class="icon icon--feature" aria-hidden="true"><use href="#icon-captions"></use></svg>
+          <h3>Subtitles, thumbnails &amp; tags</h3>
+          <p>Grab subtitles, embed the thumbnail, and write title and artist metadata into the file — all optional, per download.</p>
+        </li>
+        <li class="feature-card reveal">
+          <svg class="icon icon--feature" aria-hidden="true"><use href="#icon-search"></use></svg>
+          <h3>Find it, retry it</h3>
+          <p>Filter a long download list as you type, and retry any failed download with one click.</p>
+        </li>
+        <li class="feature-card reveal">
+          <svg class="icon icon--feature" aria-hidden="true"><use href="#icon-sliders"></use></svg>
+          <h3>Set your defaults</h3>
+          <p>Choose a default save folder and filename template, and set how many downloads run at once.</p>
         </li>
       </ul>
     </div>
@@ -403,6 +477,13 @@
             <img src="/assets/screenshots/progress-light.png" alt="Download list in light mode with an active download at 9.1 percent and a transfer speed of 11.92 MiB per second" width="1600" height="1111" loading="lazy">
           </picture>
           <figcaption><strong>Numbers you can trust.</strong> Percentage and speed are read straight from yt-dlp's own output, live.</figcaption>
+        </figure>
+        <figure class="showcase-item reveal">
+          <picture>
+            <source srcset="/assets/screenshots/settings-dark.webp" type="image/webp">
+            <img src="/assets/screenshots/settings-dark.png" alt="KeepMeTube settings panel showing default download location, filename template, and concurrent downloads controls" width="1600" height="1131" loading="lazy">
+          </picture>
+          <figcaption><strong>Your defaults, your way.</strong> Set a default save folder, a filename template, and how many downloads run at once.</figcaption>
         </figure>
       </div>
     </div>

@@ -165,6 +165,29 @@
 <symbol id="icon-drag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
   <path d="M9 6 5 12l4 6M15 6l4 6-4 6"/>
 </symbol>
+<symbol id="icon-playlist" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M4 6h12M4 11h12M4 16h7"/>
+  <circle cx="18" cy="17" r="4"/>
+  <path d="M16.7 15.3v3.4l3-1.7-3-1.7Z" fill="currentColor" stroke="none"/>
+</symbol>
+<symbol id="icon-clipboard" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="6" y="5.5" width="12" height="15" rx="1.6"/>
+  <path d="M9.5 5.5V4.3a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1V5.5"/>
+</symbol>
+<symbol id="icon-captions" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="3" y="6" width="18" height="12" rx="2"/>
+  <path d="M7 11h4M7 14h7M14 11h3"/>
+</symbol>
+<symbol id="icon-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="10.5" cy="10.5" r="6.5"/>
+  <path d="M20 20l-4.8-4.8"/>
+</symbol>
+<symbol id="icon-sliders" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M4 7h10M17 7h3M4 12h4M11 12h9M4 17h13M20 17h1"/>
+  <circle cx="14" cy="7" r="2" fill="var(--bg-1)"/>
+  <circle cx="8" cy="12" r="2" fill="var(--bg-1)"/>
+  <circle cx="17" cy="17" r="2" fill="var(--bg-1)"/>
+</symbol>
 </defs>
 </svg>
 
@@ -180,6 +203,7 @@
     <nav class="site-nav" aria-label="Primary">
       <a href="#features">Özellikler</a>
       <a href="#compare">Açık &amp; koyu</a>
+      <a href="#playlists">Oynatma listeleri</a>
       <a href="#screenshots">Ekran görüntüleri</a>
       <a href="#download">İndir</a>
     </nav>
@@ -210,6 +234,7 @@
 <div class="mobile-nav" id="mobile-nav" data-mobile-nav hidden>
   <a href="#features">Özellikler</a>
   <a href="#compare">Açık &amp; koyu</a>
+  <a href="#playlists">Oynatma listeleri</a>
   <a href="#screenshots">Ekran görüntüleri</a>
   <a href="#download">İndir</a>
   <a href="https://github.com/Tetracon05/KeepMeTube">GitHub</a>
@@ -276,7 +301,7 @@
       <div class="compare-block reveal">
         <div class="compare-block__head">
           <h3>İndirme kuyruğu</h3>
-          <p>Her indirme için ilerleme, aktarım hızı ve geçmiş, tek bakışta.</p>
+          <p>Her indirme için ilerleme, aktarım hızı ve geçmiş, en yeniden en eskiye sıralı — listeyi filtreleyin, başarısız birini yeniden deneyin ya da bir oynatma listesinin kuyruğuna girin.</p>
         </div>
         <div class="compare" data-compare>
           <div class="compare__frame" data-compare-frame style="aspect-ratio: 1600 / 1131;">
@@ -302,7 +327,7 @@
       <div class="compare-block reveal">
         <div class="compare-block__head">
           <h3>İndirme ekle</h3>
-          <p>Bir çözünürlük ve kapsayıcı seçin, ardından yaş sınırlı veya üyelere özel içerik için çerez ekleyin.</p>
+          <p>Bir çözünürlük ve kapsayıcı seçin, ardından yaş sınırlı veya üyelere özel içerik için çerez ekleyin. Tek bir bağlantı yapıştırın ya da birden fazlasını — alan panonuzdan otomatik olarak da doldurulabilir.</p>
         </div>
         <div class="compare" data-compare>
           <div class="compare__frame" data-compare-frame style="aspect-ratio: 1600 / 1131;">
@@ -326,6 +351,30 @@
       </div>
 
       <p class="compare-note">Türkçe olarak gösterilmiştir — KeepMeTube'a yerleşik 10 dilden biri.</p>
+    </div>
+  </section>
+
+  <section class="showcase" id="playlists">
+    <div class="wrap">
+      <h2>Oynatma listeleri, halledildi</h2>
+      <p class="section-lead">Bir oynatma listesi bağlantısı yapıştırın, KeepMeTube analiz etsin; ardından hangi videoları alacağınızı seçip hepsini tek seferde kuyruğa alın. Her oynatma listesi indirme listenizde tek bir satırda toplanır — neyin kuyrukta olduğunu gösteren bir detay görünümüyle — ve kendi alt klasörüne, oynatma listesinin adıyla kaydedilir.</p>
+
+      <div class="showcase-grid">
+        <figure class="showcase-item reveal">
+          <picture>
+            <source srcset="/assets/screenshots/playlist-picker-dark.webp" type="image/webp">
+            <img src="/assets/screenshots/playlist-picker-dark.png" alt="8 video listelenmiş ve tümü indirmek üzere seçilmiş, Damnation adlı analiz edilmiş bir YouTube oynatma listesini gösteren İndirme Ekle penceresi" width="1600" height="1131" loading="lazy">
+          </picture>
+          <figcaption><strong>İstediğinizi seçin.</strong> KeepMeTube tüm oynatma listesini okur ve her videoyu listeler — kuyruğa almadan önce tümünü ya da yalnızca ihtiyacınız olanları seçin.</figcaption>
+        </figure>
+        <figure class="showcase-item reveal">
+          <picture>
+            <source srcset="/assets/screenshots/playlist-list-dark.webp" type="image/webp">
+            <img src="/assets/screenshots/playlist-list-dark.png" alt="Damnation oynatma listesine girilmiş indirme listesi; 8 parçanın tümü tamamlanmış, ayrı dosya boyutu ve ilerlemesiyle gösteriliyor" width="1600" height="1134" loading="lazy">
+          </picture>
+          <figcaption><strong>Gruplanmış, dağınık değil.</strong> Oynatma listeleri indirme listenizde tek satırda toplanır; her parçanın kendi ilerlemesini ve durumunu görmek için içine girin.</figcaption>
+        </figure>
+      </div>
     </div>
   </section>
 
@@ -368,7 +417,7 @@
         <li class="feature-card reveal">
           <svg class="icon icon--feature" aria-hidden="true"><use href="#icon-stack"></use></svg>
           <h3>Akıllı kuyruk</h3>
-          <p>Aynı anda en fazla 3 indirme çalışır; geri kalanı otomatik olarak sırasını bekler.</p>
+          <p>İndirmeler, belirlediğiniz sınıra kadar otomatik olarak çalışır; geri kalanı sırasını bekler.</p>
         </li>
         <li class="feature-card reveal">
           <svg class="icon icon--feature" aria-hidden="true"><use href="#icon-history"></use></svg>
@@ -379,6 +428,31 @@
           <svg class="icon icon--feature" aria-hidden="true"><use href="#icon-folder"></use></svg>
           <h3>Dosya işlemleri dahil</h3>
           <p>Uygulamadan çıkmadan tamamlanan indirmeleri yeniden adlandırın, Finder veya Explorer'da gösterin ya da silin.</p>
+        </li>
+        <li class="feature-card reveal">
+          <svg class="icon icon--feature" aria-hidden="true"><use href="#icon-playlist"></use></svg>
+          <h3>Tüm oynatma listeleri tek seferde</h3>
+          <p>Bir oynatma listesi bağlantısı yapıştırın, hangi videoları alacağınızı seçin ve hepsini kuyruğa alın — tek bir satırda gruplanır, kendi alt klasörüne kaydedilir.</p>
+        </li>
+        <li class="feature-card reveal">
+          <svg class="icon icon--feature" aria-hidden="true"><use href="#icon-clipboard"></use></svg>
+          <h3>Yapıştırın, yeter</h3>
+          <p>Birden fazla bağlantıyı aynı anda kuyruğa alın veya KeepMeTube URL'yi panonuzdan otomatik doldursun.</p>
+        </li>
+        <li class="feature-card reveal">
+          <svg class="icon icon--feature" aria-hidden="true"><use href="#icon-captions"></use></svg>
+          <h3>Altyazı, küçük resim ve etiketler</h3>
+          <p>Altyazı indirin, küçük resmi gömün ve dosyaya başlık ile sanatçı meta verisi yazın — hepsi indirme başına isteğe bağlı.</p>
+        </li>
+        <li class="feature-card reveal">
+          <svg class="icon icon--feature" aria-hidden="true"><use href="#icon-search"></use></svg>
+          <h3>Bul, yeniden dene</h3>
+          <p>Uzun bir indirme listesini yazarken filtreleyin ve başarısız olan herhangi bir indirmeyi tek tıkla yeniden deneyin.</p>
+        </li>
+        <li class="feature-card reveal">
+          <svg class="icon icon--feature" aria-hidden="true"><use href="#icon-sliders"></use></svg>
+          <h3>Varsayılanlarınızı belirleyin</h3>
+          <p>Varsayılan bir kayıt klasörü ve dosya adı şablonu seçin, aynı anda kaç indirmenin çalışacağını ayarlayın.</p>
         </li>
       </ul>
     </div>
@@ -403,6 +477,13 @@
             <img src="/assets/screenshots/progress-light.png" alt="Yüzde 9,1'de aktif bir indirme ve saniyede 11,92 MiB aktarım hızıyla açık modda indirme listesi" width="1600" height="1111" loading="lazy">
           </picture>
           <figcaption><strong>Güvenebileceğiniz rakamlar.</strong> Yüzde ve hız, doğrudan yt-dlp'nin kendi çıktısından, canlı olarak okunur.</figcaption>
+        </figure>
+        <figure class="showcase-item reveal">
+          <picture>
+            <source srcset="/assets/screenshots/settings-dark.webp" type="image/webp">
+            <img src="/assets/screenshots/settings-dark.png" alt="Varsayılan indirme konumu, dosya adı şablonu ve eşzamanlı indirme kontrollerini gösteren KeepMeTube ayarlar paneli" width="1600" height="1131" loading="lazy">
+          </picture>
+          <figcaption><strong>Varsayılanlarınız, sizin tarzınızda.</strong> Varsayılan bir kayıt klasörü, bir dosya adı şablonu ve aynı anda kaç indirmenin çalışacağını ayarlayın.</figcaption>
         </figure>
       </div>
     </div>
